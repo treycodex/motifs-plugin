@@ -1,9 +1,9 @@
 ---
 name: Motifs-execution-head
 description: Use when a builder is deciding how their product makes money: free trial or freemium, what stays free, trial length, when and where the paywall appears, plan lineup and monthly versus annual, price and price per country, family or seat plans, the upgrade ask when a free sample or limit runs out, the purchase button, and cancelling during a trial. Tests why each researched play worked where it did and whether that holds here, recommends a Feature or a Research-based suggestion, and offers to plan and build it. Finds plays itself (Motifs MCP or the Plays folder) and can start from a DIAGNOSIS.md finding. Needs a product brief (PRODUCT.md); without one it runs Planning first. NOT for payments plumbing (Stripe, RevenueCat, webhooks), writing or refactoring the paywall or billing code, bugs, marketing campaigns, or features outside monetization unless the builder asks for Motifs or a Diagnosis finding hands off.
-version: "V4.3"
+version: "V4.4"
 ---
-<!-- Skill version: V4.3 -->
+<!-- Skill version: V4.4 -->
 <!-- Trigger scope: the description triggers on monetization only, where the library is deep. Widen it as each collection is finished: Limits & Boundaries next (quota exhaustion, spend caps, downgrade, failed payment, cancellation after a trial, anonymous walls), then activation and growth mechanics. The motifs router skill carries the same list. -->
 
 # Execution Head
@@ -41,6 +41,15 @@ Core Features MD, GTM MD (`GTM.md`) and Diagnosis MD. Treat a file
 under an old name as its new equivalent. Keep updating it where it
 is, under the name it has; do not rename, move or delete it unless
 the user asks. Create new files under the new names.
+
+These files are the builder's, not yours. The first time you would
+create one in a project, say which file and where, and ask:
+"I'll save this as `FEATURES.md` at the repository root. OK?"
+Write it only on a yes. On a no, give the
+content in your reply instead and do not ask again this session.
+Once the file exists, update it without asking. An approval that
+already named the file counts as the ask. Never write to `CLAUDE.md`,
+`AGENTS.md` or any other instructions file.
 
 ## Prerequisite: Complete Planning First
 

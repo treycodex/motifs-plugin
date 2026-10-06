@@ -1,9 +1,9 @@
 ---
 name: Motifs-gtm-head
 description: Use when a builder holds one or more Motifs plays about reaching or winning users, copied from motifs.dev or read from the Motifs MCP, and wants to launch with them: "which of these should I launch with", "turn this play into a launch plan", "how do I run this for my app". Compares the plays on their evidence, picks the strongest fit for the builder's goal, and adapts it into a launch plan (LAUNCH.md) using PRODUCT.md and FEATURES.md, ending with a first test. Needs at least one reference play. NOT for "how do I get users" with no play in hand, marketing copy or launch posts, defining the product, or building features.
-version: "V2.1"
+version: "V2.2"
 ---
-<!-- Skill version: V2.1 -->
+<!-- Skill version: V2.2 -->
 
 # GTM Head
 
@@ -42,6 +42,15 @@ Core Features MD, GTM MD (`GTM.md`) and Diagnosis MD. Treat a file
 under an old name as its new equivalent. Keep updating it where it
 is, under the name it has; do not rename, move or delete it unless
 the user asks. Create new files under the new names.
+
+These files are the builder's, not yours. The first time you would
+create one in a project, say which file and where, and ask:
+"I'll save this as `LAUNCH.md` at the repository root. OK?"
+Write it only on a yes. On a no, give the
+content in your reply instead and do not ask again this session.
+Once the file exists, update it without asking. An approval that
+already named the file counts as the ask. Never write to `CLAUDE.md`,
+`AGENTS.md` or any other instructions file.
 
 ## Inputs
 

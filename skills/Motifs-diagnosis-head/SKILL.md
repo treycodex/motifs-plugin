@@ -1,9 +1,9 @@
 ---
 name: Motifs-diagnosis-head
 description: Use when a live product isn't doing what the builder hoped and they want to know why: "nobody upgrades", "trial users churn", "signups dropped", "people sign up and never come back", "checkout starts but doesn't finish", "revenue went flat". Finds and ranks problems from the product's own code, tracking, database and billing data, across five areas: acquisition, activation, retention, referral and revenue. Explore looks for problems in areas the builder names; Investigate starts from one symptom. Read-only, and asks before querying production data. NOT for suggesting features, fixing bugs or crashes ("the button does nothing"), setting up tracking, or planning product direction.
-version: "V2.1"
+version: "V2.2"
 ---
-<!-- Skill version: V2.1 -->
+<!-- Skill version: V2.2 -->
 
 # Diagnosis Head
 
@@ -41,6 +41,15 @@ Core Features MD, GTM MD (`GTM.md`) and Diagnosis MD. Treat a file
 under an old name as its new equivalent. Keep updating it where it
 is, under the name it has; do not rename, move or delete it unless
 the user asks. Create new files under the new names.
+
+These files are the builder's, not yours. The first time you would
+create one in a project, say which file and where, and ask:
+"I'll save this as `DIAGNOSIS.md` at the repository root. OK?"
+Write it only on a yes. On a no, give the
+content in your reply instead and do not ask again this session.
+Once the file exists, update it without asking. An approval that
+already named the file counts as the ask. Never write to `CLAUDE.md`,
+`AGENTS.md` or any other instructions file.
 
 ## Modes
 

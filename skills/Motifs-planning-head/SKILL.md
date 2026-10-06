@@ -1,9 +1,9 @@
 ---
 name: Motifs-planning-head
 description: Use when a builder is starting a product or rethinking one: "I'm starting an app", "I have an idea for", "what should v1 be", "what should the MVP include", "where do I start", "who should I build this for first", "help me write down what this is", or what to charge before the product is settled. Turns the builder's vision into a product brief (PRODUCT.md) through a question-led conversation, one to three questions at a time: product description, problem and desired progress, sample use case, offer, and what makes it different, each decision marked agreed, provisional or open. Also runs when another Motifs head finds no product brief. Plays are optional inspiration. NOT for monetization choices (trials, paywall, plans, price) for a product whose brief is settled (Execution), finding why a live product underperforms (Diagnosis), or writing code.
-version: "V2.1"
+version: "V2.2"
 ---
-<!-- Skill version: V2.1 -->
+<!-- Skill version: V2.2 -->
 
 # Planning Head
 
@@ -41,6 +41,15 @@ Core Features MD, GTM MD (`GTM.md`) and Diagnosis MD. Treat a file
 under an old name as its new equivalent. Keep updating it where it
 is, under the name it has; do not rename, move or delete it unless
 the user asks. Create new files under the new names.
+
+These files are the builder's, not yours. The first time you would
+create one in a project, say which file and where, and ask:
+"I'll save this as `PRODUCT.md` at the repository root. OK?"
+Write it only on a yes. On a no, give the
+content in your reply instead and do not ask again this session.
+Once the file exists, update it without asking. An approval that
+already named the file counts as the ask. Never write to `CLAUDE.md`,
+`AGENTS.md` or any other instructions file.
 
 ## Inputs
 
@@ -330,7 +339,9 @@ the product's solution and desired progress, and that the offer's
 core components and benefits follow from those same problems.
 
 Present the five sections together and ask whether they capture
-the product the developer wants to build.
+the product the developer wants to build. When PRODUCT.md does not
+exist yet, say in the same question that the brief will be saved as
+`PRODUCT.md` at the repository root (see Files).
 
 Resolve requested changes and confirm new material decisions.
 Do not request approval again for already approved decisions.
