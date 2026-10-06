@@ -1,0 +1,13 @@
+{
+  "name": "motifs",
+  "owner": { "name": "Motifs", "url": "https://motifs.dev" },
+  "description": "Motifs for Claude Code.",
+  "plugins": [
+    {
+      "name": "motifs",
+      "source": "./",
+      "description": "The Motifs MCP, a router, and the Planning, Diagnosis, Execution and GTM skills.",
+      "version": "0.1.0"
+    }
+  ]
+}

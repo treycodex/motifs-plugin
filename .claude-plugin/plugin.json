@@ -1,0 +1,19 @@
+{
+  "name": "motifs",
+  "displayName": "Motifs",
+  "version": "0.1.0",
+  "description": "Research-backed product and growth intelligence for people building with a coding agent: the Motifs MCP, a router, and the Planning, Diagnosis, Execution and GTM skills.",
+  "author": {
+    "name": "Motifs",
+    "url": "https://motifs.dev"
+  },
+  "homepage": "https://motifs.dev/mcp/",
+  "repository": "https://github.com/treycodex/motifs-plugin",
+  "keywords": [
+    "motifs",
+    "product",
+    "monetization",
+    "pricing",
+    "growth"
+  ]
+}

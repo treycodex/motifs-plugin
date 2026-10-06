@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "motifs": {
+      "type": "http",
+      "url": "https://motifs.dev/api/mcp/"
+    }
+  }
+}
