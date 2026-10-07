@@ -7,7 +7,7 @@
       "name": "motifs",
       "source": "./",
       "description": "The Motifs MCP, a router, and the Planning, Diagnosis, Execution and GTM skills.",
-      "version": "0.1.2"
+      "version": "0.1.3"
     }
   ]
 }

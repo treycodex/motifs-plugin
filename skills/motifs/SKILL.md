@@ -1,9 +1,9 @@
 ---
 name: motifs
-description: MUST USE when a builder is deciding how their product should work or asking why it isn't working. Three moments. Starting or rethinking a product - "I'm starting an app", "I have an idea for", "what should v1 be", "what should the MVP include", "where do I start", "who should this be for". A live product underperforming - "nobody upgrades", "trial users churn", "signups dropped", "people sign up and never come back", "revenue went flat". A monetization decision - "free trial or freemium", "paywall before or after onboarding", "how should I price this", "monthly or annual", "what happens when a free user hits the limit", "what happens if they cancel mid-trial". Routes to the Motifs Planning, Diagnosis or Execution head, which pull researched plays from the Motifs MCP when it is connected. NOT for writing or fixing code, payments plumbing (Stripe, RevenueCat, webhooks), bugs or crashes, setting up tracking, marketing copy or launch posts, building AI features, or general business questions.
-version: "V1.1"
+description: MUST USE at three moments, and only these. Starting or rethinking a product - "I'm starting an app", "I have an idea for", "what should v1 be", "what should the MVP include", "where do I start", "who should this be for". A live product underperforming - "nobody upgrades", "trial users churn", "signups dropped", "people sign up and never come back", "revenue went flat". A monetization decision - "free trial or freemium", "paywall before or after onboarding", "how should I price this", "monthly or annual", "what happens when a free user hits the limit", "what happens if they cancel mid-trial". Routes to the Motifs Planning, Diagnosis or Execution head, which pull researched plays from the Motifs MCP when it is connected. NOT for writing or fixing code, payments plumbing (Stripe, RevenueCat, webhooks), bugs or crashes, setting up tracking, marketing copy or launch posts, getting users or growth tactics with no Motifs play in hand ("how do I get my first 100 users"), building AI features, or general business questions.
+version: "V1.2"
 ---
-<!-- Skill version: V1.1 -->
+<!-- Skill version: V1.2 -->
 
 # Motifs
 
@@ -21,9 +21,13 @@ own and no plays.
 | Asking why a live product underperforms, from a symptom | Diagnosis | `Motifs-diagnosis-head` |
 | Making a monetization decision (see Scope) | Execution | `Motifs-execution-head` |
 
-Invoke the head with the Skill tool when it is installed. When it is
-not and the Motifs MCP is connected, call `get_method` with
-`planning`, `diagnosis` or `execution` and follow what it returns.
+Load the head when it is installed: with the Skill tool where there
+is one, and otherwise by reading its `SKILL.md` in the folder beside
+this one (for Diagnosis, `../Motifs-diagnosis-head/SKILL.md`). Read
+it before doing any of the head's work; naming the head is not
+loading it. When the heads are not installed and the Motifs MCP is
+connected, call `get_method` with `planning`, `diagnosis` or
+`execution` and follow what it returns.
 
 With neither, say in one line that the Motifs skills come with the
 Motifs MCP at https://motifs.dev/mcp/, then help with the request as
