@@ -1,9 +1,9 @@
 ---
 name: Motifs-execution-head
-description: Use when a builder is deciding how their product makes money: free trial or freemium, what stays free, trial length, when and where the paywall appears, plan lineup and monthly versus annual, price and price per country, family or seat plans, the upgrade ask when a free sample or limit runs out, the purchase button, and cancelling during a trial. Tests why each researched play worked where it did and whether that holds here, recommends a Feature or a Research-based suggestion, and offers to plan and build it. Finds plays itself (Motifs MCP or the Plays folder) and can start from a DIAGNOSIS.md finding. Needs a product brief (PRODUCT.md); without one it runs Planning first. NOT for payments plumbing (Stripe, RevenueCat, webhooks), writing or refactoring the paywall or billing code, bugs, marketing campaigns, or features outside monetization unless the builder asks for Motifs or a Diagnosis finding hands off.
-version: "V4.4"
+description: Use when a builder is deciding how their product makes money: free trial or freemium, what stays free, trial length, when and where the paywall appears, plan lineup and monthly versus annual, price and price per country, family or seat plans, the upgrade ask when a free sample or limit runs out, the purchase button, and cancelling during a trial. Tests why each researched play worked where it did and whether that holds here, recommends a Feature or a Research-based suggestion, and offers to plan and build it. Finds plays itself (Motifs MCP or the Plays folder) and can start from a DIAGNOSIS.md finding. Needs to know who the product is for; when the product brief (PRODUCT.md) doesn't cover what the decision depends on, Planning asks only that and Execution picks up where it stopped. NOT for payments plumbing (Stripe, RevenueCat, webhooks), writing or refactoring the paywall or billing code, bugs, marketing campaigns, or features outside monetization unless the builder asks for Motifs or a Diagnosis finding hands off.
+version: "V5"
 ---
-<!-- Skill version: V4.4 -->
+<!-- Skill version: V5 -->
 <!-- Trigger scope: the description triggers on monetization only, where the library is deep. Widen it as each collection is finished: Limits & Boundaries next (quota exhaustion, spend caps, downgrade, failed payment, cancellation after a trial, anonymous walls), then activation and growth mechanics. The motifs router skill carries the same list. -->
 
 # Execution Head
@@ -51,38 +51,110 @@ Once the file exists, update it without asking. An approval that
 already named the file counts as the ask. Never write to `CLAUDE.md`,
 `AGENTS.md` or any other instructions file.
 
-## Prerequisite: Complete Planning First
+## Prerequisite: The Product Brief
 
-Before recommending, locate and read PRODUCT.md.
+Execution answers one decision. It needs the product facts that
+decision depends on, not a finished brief. Identify the decision
+(Process step 1), then check what you know before Process step 2.
 
-Confirm that it contains meaningful, user-approved content for
-Planning Head's five sections:
-- Product description
-- Problem and desired progress
-- Sample use case
-- Offer
-- What makes it different
+### What you know
 
-Headings, placeholders, or unapproved drafts do not count as
-completed planning. Explicitly recorded assumptions are acceptable;
-do not present them as validated facts.
+A fact is known when one of these states it:
+- PRODUCT.md, as Agreed, or as Provisional with its assumption
+  recorded. A heading, a placeholder, an unapproved draft or an Open
+  item is not known.
+- The builder, in this conversation.
+- The code, for what the current implementation appears to do:
+  what is built, the terms it sets, where the paywall sits. Search
+  the repo for billing, plan, price, trial and paywall code before
+  assuming there is none, and read it rather than ask. Feature flags, environment config, experiments,
+  or prices kept in a billing dashboard can make it wrong; when the
+  verdict depends on it, say what the code appears to do and confirm
+  it under What would change this (Process step 5). The code never
+  tells you who the product is for or why they use it.
 
-If PRODUCT.md is missing or incomplete:
-1. Explain that the product direction must be established before
-   meaningful recommendations can be made.
-2. Invoke Planning Head with the Skill tool, if available, to create
-   or complete PRODUCT.md.
-3. Preserve completed work and address only missing or unresolved
-   planning decisions.
-4. Obtain the user's approval of the resulting direction. Do not
-   request approval again for decisions already approved.
-5. Read the completed PRODUCT.md, then resume the original request.
+Never take a fact from a play, and never guess one. Do not present a
+Provisional item as a validated fact.
 
-If Planning Head is unavailable, ask the user to provide it or
-supply its completed PRODUCT.md. Do not pretend to have run it.
+### What the decision needs
 
-Never infer the product vision from plays or invent planning
-decisions to bypass this prerequisite.
+Always needed:
+- **Who and what:** who the product is for and what they do with it
+  (Product description). Without it no play's conditions can be
+  tested.
+
+Check these too, but they count as needed only when the answer could
+change the verdict or which play applies:
+- **The problem** this decision serves (Problem and desired
+  progress).
+- **The moment:** one person and the situation that brings them to
+  the product (Sample use case).
+- For a monetization decision, **the offer:** what the customer
+  gets, what is left out, and any terms already decided (Offer).
+- For price or plan lineup, **the alternative:** what the customer
+  uses today instead (Problem and desired progress).
+
+When one of these is unknown and would not change the verdict, go on
+without it and say in one line what you assumed. Never ask for a fact
+only to complete PRODUCT.md.
+
+### Hand-off to Planning
+
+When every needed fact is known, go to Process step 2. Otherwise:
+
+1. Keep where you stopped: the request in the user's words, the
+   decision, and the Diagnosis finding id if you started from one.
+2. Do not ask permission first. Planning opens with the hand-off
+   line, so do not write one yourself.
+3. Invoke Planning Head with the Skill tool, passing this note as its
+   arguments. If the skill is not installed and the Motifs MCP is
+   connected, call `get_method` with `planning` and follow it with
+   this note:
+
+   ```
+   Execution hand-off
+   Decision: <the decision>
+   Need: <item> (<PRODUCT.md section>): <why it matters to this decision, one line>
+   Already known: <each fact and where it came from: PRODUCT.md, the conversation or the code; or "nothing">
+   ```
+
+   List under Need only product facts that belong in PRODUCT.md.
+   Confirming what the code appears to do stays with you (Process
+   step 5). Planning answers the note under "When Execution hands
+   off a decision" and does not run its full flow.
+
+If neither the skill nor `get_method` is available, say in one line
+that Planning Head is not available, and continue as in Resume step 3.
+Do not ask Planning's questions in its place or pretend to have run
+it.
+
+### Resume
+
+When Planning hands back:
+1. Re-read PRODUCT.md. Items Planning was told not to save count as
+   known from the conversation.
+2. Write this line on its own, straight after Planning's hand-back
+   and before reading plays or anything else:
+
+   > Back to <decision>.
+
+   Then continue from Process step 2 with the request you kept. It,
+   not Planning's last message, is "Starting from". Do not re-ask
+   what Planning just asked, and do not restate the brief.
+3. If a needed fact is still not known:
+   - **Who and what:** do not recommend. Say:
+
+     > I can't answer <decision> yet: I still don't know who
+     > <product> is for and what they do with it. Tell me in a
+     > sentence and I'll pick it up from there.
+
+     Then stop.
+   - **Anything else:** answer anyway with a conditional verdict
+     (see Output: Default Answer), and name the fact that would
+     settle it.
+
+   Do not hand off again for the same fact in this conversation
+   unless the user asks.
 
 ## Inputs
 
@@ -132,6 +204,11 @@ per Plan and Build.
 Determine what the user wants to build, improve, or evaluate.
 Stay narrow for a narrow request. For a broad one, take priorities
 from PRODUCT.md.
+
+If the request is too vague to search on (for example, it is unclear
+what the builder is trying to improve), ask one question about the
+decision now, before searching. It is this decision's round of
+questions (step 5); ask nothing more there.
 
 ### 2. Diagnosis is optional
 
@@ -187,13 +264,50 @@ For each play kept:
 - Name the conditions it depended on where it worked, citing the
   play's sections: users, cadence, motivation, context,
   prerequisites.
-- Test each condition against PRODUCT.md, quoting it: holds,
+- Test each condition against what you know, quoting the source
+  (PRODUCT.md, the builder's words, or the file in the code): holds,
   partly holds, or breaks, and why.
 - Decide what to take, change, and leave behind, with reasons.
 - Read its failure cases and limitations, not only its benefit
   cases.
 
-### 5. Recommend
+### 5. Ask what only the builder knows
+
+Do not hold the answer back for these questions. Answer first, with
+a conditional verdict where a fact is missing, and ask under **What
+would change this** at the end of the default answer.
+
+Ask when a fact the builder knows, and no file shows, could change
+the verdict. Tie each question to a named condition: one a play from
+step 4 depends on, or, when no play applies, the decision itself.
+Ask at most three, numbered, once per decision; a question asked in
+step 1 uses this round. Never repeat a question Planning asked. If
+nothing would change the verdict, say so in one line under the
+heading.
+
+Ask for facts the builder knows and no file shows:
+- The goal: "What are you trying to improve?"
+- What is happening: "What have users complained about?"
+- A constraint: "What's pushing you toward this now?"
+- Evidence: "Do you have any numbers on this yet?"
+
+Do not ask:
+- What the code, tracking or billing config shows. Read it.
+- What Diagnosis would measure in a live product, unless the builder
+  declined Diagnosis in step 2; then ask only whether they have the
+  number.
+- A product fact that belongs in PRODUCT.md. That is Planning's.
+- For the strategy: "Why do you think this will work?", "What do you
+  think you should do?", "Is this the right approach?" Taking a
+  position is your job.
+
+Use plain words, the way a founder who has done this before would ask.
+
+When the builder answers, give the updated verdict first, then only
+what changed in the recommendations. Do not ask a second round:
+anything still unknown stays a condition in the verdict.
+
+### 6. Recommend
 
 Recommend only what traces to a condition that holds or partly
 holds. Remove anything that cannot.
@@ -215,7 +329,7 @@ cases. Label new expressions as untested proposals, and do not
 prescribe an exact layout. Work this into **In your product** rather
 than adding a heading to the default answer.
 
-### 6. Answer
+### 7. Answer
 
 Write the default answer per Output: Default Answer. Then follow
 Go Deeper and Plan and Build.
@@ -242,8 +356,8 @@ Plays considered: used — <play>, <play> · dropped — <play> (<reason>), <pla
 to a play section.
 
 **How that meets your project.** One short paragraph per condition,
-in the project's terms, quoting PRODUCT.md: holds, partly holds, or
-breaks, and why.
+in the project's terms, quoting PRODUCT.md or what the builder said:
+holds, partly holds, or breaks, and why.
 
 **What we take, change and leave behind.** Prose, with the reason
 for each.
@@ -254,7 +368,7 @@ and metric, and the biggest caveat.
 ## Recommendations
 
 **R1 — <name>** (Feature | Research-based suggestion)
-- Serves: <problem label from PRODUCT.md, or finding id> in <sample use case>
+- Serves: <problem label from PRODUCT.md, the builder's words for the problem, or finding id> in <sample use case>
 - In your product: <sample use case person> hits <trigger>, does <action>,
   and the product responds with <response>
 - Smallest version: <what> Done when: <observable criteria>
@@ -262,6 +376,9 @@ and metric, and the biggest caveat.
 
 ## Not taking from this play
 One line per element left behind, and why.
+
+## What would change this
+1. <question> — <the condition it settles>
 
 ## Go deeper
 1. <option>
@@ -273,7 +390,17 @@ Repeat the Play breakdown block for each play used.
 
 Rules:
 - "In your product" uses the person and trigger from PRODUCT.md's
-  Sample use case, not the play company's user.
+  Sample use case, not the play company's user; without one, the
+  situation the builder described, marked *assumed*.
+- What would change this holds at most three numbered questions
+  from Process step 5, or one line saying nothing would. Ask nowhere
+  else in the answer.
+- When a fact that would change the verdict is unknown, make the
+  verdict conditional: "<verdict> if <fact>; otherwise <verdict>",
+  and put the fact under Hypothesis.
+- After the first default answer in a conversation, when PRODUCT.md
+  is missing or has Open sections, end with the full-brief offer in
+  Handoffs.
 - On a Don't build verdict, Recommendations states what evidence
   would change the verdict.
 - When starting from Diagnosis, "Serves" names the finding id and
@@ -366,12 +493,21 @@ unless essential to the product's main value.
 Each handoff is a checkpoint: say what was found, name the next
 skill and what it carries, and ask. On yes, invoke it with the
 Skill tool. Never imitate a skill that is not installed; ask for
-its output instead. What a no means depends on the handoff:
+its output instead. The hand-off to Planning for missing facts is
+the one exception: it starts without asking. What a no means depends
+on the handoff:
 
 - **From Diagnosis Head:** start from the finding it passes; name it
   in "Starting from".
-- **To Planning Head:** when PRODUCT.md is missing or incomplete.
-  Follow the prerequisite's steps; recommendations wait for it.
+- **To Planning Head, missing facts:** when the decision needs a
+  product fact nobody knows. Follow the Prerequisite's Hand-off and
+  Resume.
+- **To Planning Head, the full brief:** once per conversation, after
+  the first default answer, when PRODUCT.md is missing or has Open
+  sections, end with: "Your product brief covers only what this
+  needed. Want me to fill in the rest, so later answers fit the whole
+  product?" On yes, invoke Planning Head for its full flow. On no,
+  carry on and do not offer again.
 - **To Diagnosis Head:** the offer in Process step 2 or the Go
   deeper option. On no, continue to recommendations.
 - **After a build:** offer Build inventory so GTM Head can use it.

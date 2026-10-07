@@ -36,7 +36,8 @@ You do not call the skills by name. They start when you describe:
 2. **A live product that underperforms** ("nobody upgrades", "trial users churn").
    Diagnosis reads your code, tracking and billing and writes `DIAGNOSIS.md`.
 3. **A monetization decision** ("free trial or freemium", "how should I price
-   this"). Execution finds researched plays through the MCP and writes `FEATURES.md`.
+   this"). Execution finds researched plays through the MCP, asks only what that
+   decision needs to know about your product, and writes `FEATURES.md`.
 
 GTM runs when you already hold a Motifs play and want to launch with it, and writes
 `LAUNCH.md`. None of them triggers on writing code, payments plumbing, bugs,

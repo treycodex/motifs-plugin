@@ -1,9 +1,9 @@
 ---
 name: Motifs-planning-head
-description: Use when a builder is starting a product or rethinking one: "I'm starting an app", "I have an idea for", "what should v1 be", "what should the MVP include", "where do I start", "who should I build this for first", "help me write down what this is", or what to charge before the product is settled. Turns the builder's vision into a product brief (PRODUCT.md) through a question-led conversation, one to three questions at a time: product description, problem and desired progress, sample use case, offer, and what makes it different, each decision marked agreed, provisional or open. Also runs when another Motifs head finds no product brief. Plays are optional inspiration. NOT for monetization choices (trials, paywall, plans, price) for a product whose brief is settled (Execution), finding why a live product underperforms (Diagnosis), or writing code.
-version: "V2.2"
+description: Use when a builder is starting a product or rethinking one: "I'm starting an app", "I have an idea for", "what should v1 be", "what should the MVP include", "where do I start", "who should I build this for first", "help me write down what this is". Turns the builder's vision into a product brief (PRODUCT.md) through a question-led conversation, one to three questions at a time: product description, problem and desired progress, sample use case, offer, and what makes it different, each decision marked agreed, provisional or open. Also runs when Execution's decision needs a product fact the brief lacks: then it asks only that and hands back. Plays are optional inspiration. NOT for monetization choices (trials, paywall, plans, price), which go to Execution even before the brief exists, finding why a live product underperforms (Diagnosis), or writing code.
+version: "V2.3"
 ---
-<!-- Skill version: V2.2 -->
+<!-- Skill version: V2.3 -->
 
 # Planning Head
 
@@ -80,6 +80,10 @@ Preserve agreed decisions, recorded assumptions, play references,
 and unresolved questions. Do not restart planning unnecessarily.
 
 ## Start the Conversation
+
+If you were invoked with a note headed "Execution hand-off", skip
+this and the sections below it. Follow "When Execution hands off a
+decision" under Handoff to Execution.
 
 For a new project, begin with:
 
@@ -389,6 +393,64 @@ with dependent recommendations.
 
 Keep this handoff within the relevant PRODUCT.md sections.
 Do not add a sixth primary output.
+
+### When Execution hands off a decision
+
+Execution invokes Planning with a note headed "Execution hand-off".
+It names a decision, the product facts that decision needs and why,
+and what is already known. Answer only those facts, then hand back.
+Do not run the full flow. Do not mention the note, Execution or
+these steps to the developer; just ask.
+
+1. Record without asking any fact under "Already known" that came
+   from the conversation and belongs in PRODUCT.md, as the builder
+   stated it.
+2. Open your first message with this line, filling in the <> parts,
+   then ask:
+
+   > Before I answer <decision>, I need to know <n> thing(s) about
+   > your product: <the items, in plain words>. I'll ask just those,
+   > save them to PRODUCT.md, then come back to <decision>.
+
+   Ask only the questions that answer the Need items, in the order
+   listed, one to three per turn. Word them from Questions by Output,
+   using each item's reason. When the note needs the Product
+   description and there is no PRODUCT.md, open with the question in
+   Start the Conversation; it covers that item.
+3. Skip everything else: sections the note does not name, plays, and
+   the five-section review. Never ask about a section the note does
+   not name, even when it is empty.
+4. When the developer is unsure, follow Help the Developer Decide for
+   that item. If they still cannot choose, propose a working
+   assumption and ask whether to record it as Provisional. If they
+   decline, record the item as Open.
+5. Show only the items recorded in this run, each with its status,
+   and ask once whether they are right. A fact the developer stated
+   is Agreed; an accepted assumption is Provisional. When PRODUCT.md
+   does not exist yet, say in the same question that they will be
+   saved as `PRODUCT.md` at the repository root (see Files).
+6. Save them to PRODUCT.md under their sections, preserving
+   everything already there. If there is no PRODUCT.md, create it
+   with the five section headings, fill only these items, and mark
+   every other section Open (Current answer: Undecided. Revisit
+   when: the full brief is planned). If the developer said no to a
+   new file, save nothing; the items stay in the conversation.
+7. Hand back in one line:
+
+   > Saved to PRODUCT.md: <items>.
+
+   or, when nothing was saved:
+
+   > Not saved; I'll use what you told me: <items>.
+
+   That ends planning, not your reply. In the same reply, go straight
+   back to Execution Head and follow its Resume: the next line is
+   "Back to <decision>.", then its answer. Do not offer more planning
+   or ask follow-up questions, and do not end the reply on the
+   hand-back line.
+
+If the developer asks during the hand-off to plan the whole product,
+do that instead, then hand back as in step 7.
 
 ## Working Boundaries
 
