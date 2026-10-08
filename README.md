@@ -1,4 +1,15 @@
-# Motifs for Claude Code
+# Motifs for Claude Code (work in progress)
+
+> **Work in progress: not ready to install.** The skills in this plugin are parked
+> while we test whether they do more for a build than asking your agent to raise
+> the product decisions a task leaves open. For now, connect the
+> [Motifs MCP](https://motifs.dev/mcp/) (beta) on its own to search and read plays:
+>
+> ```bash
+> claude mcp add --transport http --scope user motifs https://motifs.dev/api/mcp/ && claude mcp login motifs
+> ```
+>
+> The rest of this page describes the plugin as built, for when it returns.
 
 [Motifs](https://motifs.dev) is research-backed product and growth intelligence for
 people building a product with a coding agent: what named products do, with graded
